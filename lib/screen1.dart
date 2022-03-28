@@ -4,19 +4,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screen2.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
-  final _formKey = GlobalKey<FormState>();
+class Screen1 extends StatefulWidget {
+  Screen1({Key? key}) : super(key: key);
 
   final String title = 'Interview Test App';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Screen1> createState() => _Screen1State();
 }
 
-class _HomePageState extends State<HomePage> {
+class _Screen1State extends State<Screen1> {
   final _textController = TextEditingController();
   String userInput = '';
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,6 @@ class _HomePageState extends State<HomePage> {
                   hintText: 'Type in your Text...',
                   hintStyle: const TextStyle(
                     color: Colors.grey,
-                    //backgroundColor: Colors.white,
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(9.0),
@@ -70,7 +74,6 @@ class _HomePageState extends State<HomePage> {
             ),
             Text(
               'output of the text entered :',
-              //_textController.text,
               style: Theme.of(context).textTheme.bodyText1,
             ),
             const SizedBox(
